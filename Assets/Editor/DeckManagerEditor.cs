@@ -14,12 +14,22 @@ DrawDefaultInspector();
 DeckManager deckManager= (DeckManager)target;
 if (GUILayout.Button("Draw Next Card"))
 {
-HandManager handManager= FindObjectOfType<HandManager>();
-if (handManager!= null)
+            HandManager playerHandManager = GameObject.FindGameObjectWithTag("PlayerHand").GetComponent<HandManager>();
+
+            if (playerHandManager!= null)
 {
-deckManager.DrawCard(handManager);
+deckManager.DrawCard(playerHandManager);
 }
 }
-}
+        if (GUILayout.Button("Draw Enemy Card And Play"))
+        {
+            HandManager enemyHandManager = GameObject.FindGameObjectWithTag("EnemyHand").GetComponent<HandManager>();
+            HandManager handManager = FindObjectOfType<HandManager>();
+            if (handManager != null)
+            {
+                deckManager.DrawCard(enemyHandManager);
+            }
+        }
+    }
 }
 #endif

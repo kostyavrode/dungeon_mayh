@@ -5,21 +5,16 @@ using UnityEngine;
 public class HandManager : MonoBehaviour
 {
     public Transform handTransform;
-
+    public GridType type;
     public List<Card> handObjects = new List<Card>();
 
     public float fanSpread = 5f;
     public float horizontalSpacing = 5f;
     public float verticalSpacing = 100f;
-    private void Update()
-    {
-        //UpdateHandVisual();
-    }
     public void AddCartToHand(Card card)
     {
-        //card=Instantiate(card,handTransform.position,Quaternion.identity,handTransform);
         card.transform.parent = handTransform;
-        
+        card.GetComponent<CardInteractComponent>().SetType(type);
         handObjects.Add(card);
         UpdateHandVisual();
         StartCoroutine(Wait01Sec(card));

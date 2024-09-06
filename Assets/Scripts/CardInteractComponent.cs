@@ -5,9 +5,15 @@ using UnityEngine;
 public class CardInteractComponent : MonoBehaviour
 {
     private RectTransform rectTransform;
+    [SerializeField] private GridType type;
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+    }
+    public void SetType(GridType type)
+    {
+
+    this.type = type; 
     }
     public void PlayCard()
     {
@@ -25,7 +31,7 @@ public class CardInteractComponent : MonoBehaviour
             if (hitObject.tag == "Grid")
             {
                 Grid gr= hitObject.GetComponent<Grid>();
-                if ((!gr.IsGridFull && gr.GetGridType==GridType.PLAYER))
+                if ((!gr.IsGridFull && gr.GetGridType==type))
                 {
                     hitObject.GetComponent<Grid>().SetCardToGrid(GetComponent<Card>());
                     return true;

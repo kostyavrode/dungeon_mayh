@@ -7,6 +7,8 @@ TagManager:
   - canvas
   - Grid
   - Table
+  - EnemyHand
+  - PlayerHand
   layers:
   - Default
   - TransparentFX

@@ -33,6 +33,7 @@ public class Grid : MonoBehaviour
             gridViewer.ScaleGrid();
             GameObject.FindObjectOfType<PlayerInput>().isInteracting = true;
             GridController.onGridClicked?.Invoke(this);
+            Debug.Log("CLICK TO ADD INTERACT");
         }
         else if (currentCard != null && isSelected)
         {
@@ -40,12 +41,12 @@ public class Grid : MonoBehaviour
             isSelected = false;
             GameObject.FindObjectOfType<PlayerInput>().isInteracting = false;
             GridController.onGridClicked?.Invoke(this);
+            Debug.Log("CLICK TO OFF INTERACT");
         }
     }
     public void SetGridType(GridType type)
     {
-
-    gridType = type; 
+        gridType = type; 
     }
     public void SetCardToGrid(Card card)
     {
@@ -55,6 +56,7 @@ public class Grid : MonoBehaviour
     }
     public void ClearGrid()
     {
+        Debug.Log("Clear Grid");
         currentCard= null;
         isGridFull= false;
         gridViewer.ClearView();

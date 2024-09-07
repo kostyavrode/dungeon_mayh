@@ -12,7 +12,7 @@ public class Card : MonoBehaviour
     private CardType type;
     public string Name { get { return name; } }
     public CardType CardType { get { return type; } }
-    public int Health { get { return health; } }
+    public int Health { get { return health; } set { health = value; } }
     public int Damage { get { return damage; } }
 
     private void Awake()
@@ -30,5 +30,9 @@ public class Card : MonoBehaviour
         name = cardInfo.name;
         health= cardInfo.health;
         damage = cardInfo.damage;
+    }
+    public void UpdateStats()
+    {
+        viewer.InitCardView(cardInfo.sprite, cardInfo.name, health.ToString(), damage.ToString());
     }
 }

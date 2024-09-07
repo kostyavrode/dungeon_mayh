@@ -37,14 +37,17 @@ public class GridViewer : MonoBehaviour
     public void ClearView()
     {
         Destroy(currentObject);
+        Destroy(cardPlace.GetComponentInChildren<Card>().gameObject);
         GetComponent<MeshRenderer>().material.color = Color.white;
     }
     public void AttackCardMove(Vector3 attackPosition)
     {
-        transform.DOLocalMove(attackPosition,gridAttackTime).OnComplete(MoveToOriginPosition);
+        transform.DOMove(attackPosition,gridAttackTime).OnComplete(MoveToOriginPosition);
+        ///GridController.instance.ClearSelectedGrids();
     }
     public void MoveToOriginPosition()
     {
         transform.DOLocalMove(originalPosition, gridAttackTime);
+        GridController.instance.ClearSelectedGrids();
     }
 }

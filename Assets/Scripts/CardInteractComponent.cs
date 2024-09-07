@@ -40,4 +40,21 @@ public class CardInteractComponent : MonoBehaviour
         }
         return false;
     }
+    public void DealDamage(CardInteractComponent cardToAttack)
+    {
+        Card card = GetComponent<Card>();
+        int dmg = card.Damage;
+        cardToAttack.ReceiveDamage(dmg);
+    }
+    public void ReceiveDamage(int dmg)
+    {
+        Debug.Log("Damage Received"+dmg);
+        Card card = GetComponent<Card>();
+        card.Health -= dmg;
+        card.UpdateStats();
+        if (card.Health <= 0)
+        {
+            GetComponentInParent<Grid>().ClearGrid();
+        }
+    }
 }

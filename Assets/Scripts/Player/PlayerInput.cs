@@ -60,24 +60,23 @@ public class PlayerInput : MonoBehaviour
                     Grid grid = hit.transform.GetComponent<Grid>();
                     if (grid.IsGridFull)
                     {
-                        Debug.Log("Grid detected");
                         grid.Interact();
                         lineRenderer.SetPosition(0, grid.transform.position);
                     }
                 }
             }
-            if (isInteracting)
-            {
-                if (Physics.Raycast(ray, out hit ))
-                {
-                    Transform objHit = hit.transform;
-                    if (hit.transform.tag=="Grid")
-                    {
-                        Grid gr=objHit.GetComponent<Grid>();
-                        //gr.GetComponent<GridViewer>().AttackCardMove(new Vector3(10, 10, 10));
-                    }
-                }
-            }
+            //if (isInteracting)
+            //{
+            //    if (Physics.Raycast(ray, out hit ))
+            //    {
+            //        Transform objHit = hit.transform;
+            //        if (hit.transform.tag=="Grid")
+            //        {
+            //            Grid gr=objHit.GetComponent<Grid>();
+            //            //gr.GetComponent<GridViewer>().AttackCardMove(new Vector3(10, 10, 10));
+            //        }
+            //    }
+            //}
         }
     }
 }

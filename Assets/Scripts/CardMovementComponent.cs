@@ -34,22 +34,25 @@ public class CardMovementComponent : MonoBehaviour, IDragHandler,IPointerDownHan
             pastPosition = rectTransform.localPosition;
             rectTransform.DOLocalRotate(Vector3.zero, 0.3f);
         }
-        HandManager.instance.UpdateHandVisual();
+        
     }
     public void OnPointerUp(PointerEventData eventData)
     {
         
-        if (rectTransform.localPosition.y > 150 && interactComponent.CheckCardPosition() && GameMaster.Instance.TurnType == GridType.PLAYER)
+        if (rectTransform.localPosition.y > 150 && GameMaster.Instance.TurnType == GridType.PLAYER && interactComponent.CheckCardPosition())
         {
-            GetComponent<CardInteractComponent>().PlayCard();
-            isCardPlayed = true;
+            {
+                GetComponent<CardInteractComponent>().PlayCard();
+                isCardPlayed = true;
+            }
         }
-        else if (!isCardPlayed)
+        else
+        // if (!isCardPlayed)
         {
-
+            Debug.Log("BACK CARD");
 
             rectTransform.DOLocalMove(pastPosition, 0.3f);
-            rectTransform.DOLocalRotateQuaternion(pastRotation, 0.3f);
+            rectTransform.DOLocalRotateQuaternion(pastRotation, 0.3f).OnComplete(UpdateHand);
         }
     }
     public void OnDrag(PointerEventData eventData)
@@ -62,5 +65,9 @@ public class CardMovementComponent : MonoBehaviour, IDragHandler,IPointerDownHan
     public void OnDrop(PointerEventData eventData)
     {
         
+    }
+    private void UpdateHand()
+    {
+        HandManager.instance.UpdateHandVisual();
     }
 }

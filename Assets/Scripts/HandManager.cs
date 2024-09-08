@@ -36,6 +36,7 @@ public class HandManager : MonoBehaviour
     }
     public void UpdateHandVisual()
     {
+        Debug.Log("Update Hand");
         if (handObjects.Count == 1)
         {
             handObjects[0].transform.localRotation=Quaternion.Euler(0,0,0);

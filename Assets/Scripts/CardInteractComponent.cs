@@ -31,7 +31,7 @@ public class CardInteractComponent : MonoBehaviour
             if (hitObject.tag == "Grid")
             {
                 Grid gr= hitObject.GetComponent<Grid>();
-                if ((!gr.IsGridFull && gr.GetGridType==type))
+                if ((!gr.IsGridFull && gr.GetGridType==type && GameMaster.Instance.TurnType == GridType.PLAYER))
                 {
                     hitObject.GetComponent<Grid>().SetCardToGrid(GetComponent<Card>());
                     return true;

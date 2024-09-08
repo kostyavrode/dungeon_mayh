@@ -45,7 +45,12 @@ public class GameMaster : MonoBehaviour
                 }
             }
         }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            SwitchTurn(GridType.PLAYER);
+        }
     }
+    
     private void GenerateDeck(GridType deckType)
     {
         Transform parentt = GameObject.FindGameObjectWithTag("canvas").transform;

@@ -11,6 +11,10 @@ public class HandManager : MonoBehaviour
     public float fanSpread = 5f;
     public float horizontalSpacing = 5f;
     public float verticalSpacing = 100f;
+
+
+    [SerializeField] private Transform playerDeckParent;
+    [SerializeField] private Transform enemyDeckParent;
     public void AddCartToHand(Card card)
     {
         card.transform.parent = handTransform;

@@ -21,7 +21,7 @@ if (GUILayout.Button("Draw Next Card"))
 deckManager.DrawCard(playerHandManager);
 }
 }
-        if (GUILayout.Button("Draw Enemy Card And Play"))
+        if (GUILayout.Button("Draw Enemy Card"))
         {
             HandManager enemyHandManager = GameObject.FindGameObjectWithTag("EnemyHand").GetComponent<HandManager>();
             HandManager handManager = FindObjectOfType<HandManager>();
@@ -29,6 +29,11 @@ deckManager.DrawCard(playerHandManager);
             {
                 deckManager.DrawCard(enemyHandManager);
             }
+        }
+        if (GUILayout.Button("Player Start Destribution"))
+        {
+            GameMaster gameMaster=GameObject.FindObjectOfType<GameMaster>();
+            gameMaster.StartGameDestribution();
         }
     }
 }

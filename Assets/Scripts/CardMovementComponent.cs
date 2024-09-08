@@ -28,7 +28,7 @@ public class CardMovementComponent : MonoBehaviour, IDragHandler,IPointerDownHan
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!isCardPlayed)
+        if (!isCardPlayed && GameMaster.Instance.TurnType==GridType.PLAYER)
         {
             pastRotation = rectTransform.rotation;
             pastPosition = rectTransform.localPosition;

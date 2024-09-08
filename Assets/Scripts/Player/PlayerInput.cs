@@ -58,7 +58,7 @@ public class PlayerInput : MonoBehaviour
                 if (hit.transform.tag=="Grid")
                 {
                     Grid grid = hit.transform.GetComponent<Grid>();
-                    if (grid.IsGridFull)
+                    if (grid.IsGridFull && GameMaster.Instance.TurnType==GridType.PLAYER)
                     {
                         grid.Interact();
                         lineRenderer.SetPosition(0, grid.transform.position);

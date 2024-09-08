@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HandManager : MonoBehaviour
 {
+    public static HandManager instance;
     public Transform handTransform;
     public GridType type;
     public List<Card> handObjects = new List<Card>();
@@ -15,6 +16,10 @@ public class HandManager : MonoBehaviour
 
     [SerializeField] private Transform playerDeckParent;
     [SerializeField] private Transform enemyDeckParent;
+    private void Awake()
+    {
+        instance = this;
+    }
     public void AddCartToHand(Card card)
     {
         card.transform.parent = handTransform;
@@ -29,7 +34,7 @@ public class HandManager : MonoBehaviour
         handObjects.Remove(card);
         UpdateHandVisual();
     }
-    private void UpdateHandVisual()
+    public void UpdateHandVisual()
     {
         if (handObjects.Count == 1)
         {

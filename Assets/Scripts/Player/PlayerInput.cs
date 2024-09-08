@@ -47,7 +47,7 @@ public class PlayerInput : MonoBehaviour
     }
     public void ReceiveClick()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && GameMaster.Instance.TurnType == GridType.PLAYER)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -58,7 +58,7 @@ public class PlayerInput : MonoBehaviour
                 if (hit.transform.tag=="Grid")
                 {
                     Grid grid = hit.transform.GetComponent<Grid>();
-                    if (grid.IsGridFull && GameMaster.Instance.TurnType==GridType.PLAYER)
+                    if (grid.IsGridFull)
                     {
                         grid.Interact();
                         lineRenderer.SetPosition(0, grid.transform.position);

@@ -34,11 +34,12 @@ public class CardMovementComponent : MonoBehaviour, IDragHandler,IPointerDownHan
             pastPosition = rectTransform.localPosition;
             rectTransform.DOLocalRotate(Vector3.zero, 0.3f);
         }
+        HandManager.instance.UpdateHandVisual();
     }
     public void OnPointerUp(PointerEventData eventData)
     {
         
-        if (rectTransform.localPosition.y > 250 && interactComponent.CheckCardPosition())
+        if (rectTransform.localPosition.y > 150 && interactComponent.CheckCardPosition() && GameMaster.Instance.TurnType == GridType.PLAYER)
         {
             GetComponent<CardInteractComponent>().PlayCard();
             isCardPlayed = true;

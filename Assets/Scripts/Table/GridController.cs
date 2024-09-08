@@ -51,7 +51,7 @@ public class GridController : MonoBehaviour
                         Debug.Log("Attackeym");
                         selectedGrids[0].gridViewer.AttackCardMove(selectedGrids[1].gameObject.transform.position);
                         selectedGrids[0].GetComponentInChildren<CardInteractComponent>().DealDamage(selectedGrids[1].GetComponentInChildren<CardInteractComponent>());
-                        selectedGrids[0].Interact();
+                        //selectedGrids[0].Interact();
                         //selectedGrids[1].Interact();
                         selectedGrids.Clear();
                     }
